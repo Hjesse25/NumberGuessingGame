@@ -1,6 +1,4 @@
-﻿using System.Formats.Asn1;
-
-Console.WriteLine("Welcome to the Number Guessing Game!");
+﻿Console.WriteLine("Welcome to the Number Guessing Game!");
 Console.WriteLine("I'm thinking of a number between 1 and 100.");
 MenuSelection();
 
