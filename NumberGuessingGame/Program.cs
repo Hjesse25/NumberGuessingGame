@@ -1,4 +1,6 @@
-﻿Console.WriteLine("Welcome to the Number Guessing Game!");
+﻿using System.Formats.Asn1;
+
+Console.WriteLine("Welcome to the Number Guessing Game!");
 Console.WriteLine("I'm thinking of a number between 1 and 100.");
 MenuSelection();
 
@@ -54,9 +56,15 @@ void StartGame(string difficulty, int chances)
     {
         Console.Write("Enter your choice: ");
         int choice = Convert.ToInt32(Console.ReadLine());
-        numOfAttempts++;
+        numOfAttempts++;       
 
-        if (choice > randomNum)
+        if (numOfAttempts == chances && choice != randomNum)
+        {
+            Console.WriteLine($"Game over! You did not guess the right number.");
+            Console.WriteLine($"The number is {randomNum}");
+            isGame = false;
+        }
+        else if (choice > randomNum)
         {
             Console.WriteLine($"Incorrect! The number is less than {choice}.\n");
         }
@@ -67,13 +75,6 @@ void StartGame(string difficulty, int chances)
         else
         {
             Console.WriteLine($"Congratulations! You guessed the correct number in {numOfAttempts} attempts.");
-            isGame = false;
-        }
-
-        if (numOfAttempts > chances)
-        {
-            Console.WriteLine("Game over! You exceeded the number of attempts.");
-            Console.WriteLine($"The number is: {randomNum}");
             isGame = false;
         }
     }
